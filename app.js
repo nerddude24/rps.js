@@ -40,6 +40,10 @@ function win() {
 	userScore++;
 }
 
+function tie() {
+	alert("It's a tie!");
+}
+
 function playRound() {
 	userChoice = getUserChoice();
 
@@ -48,7 +52,7 @@ function playRound() {
 	console.log("CPU: " + cpuChoice);
 	console.log("USER: " + userChoice);
 
-	if (userChoice == cpuChoice) alert("It's a tie!");
+	if (userChoice == cpuChoice) tie();
 	else if (userChoice == rock) {
 		if (cpuChoice == scissors) win();
 		else if (cpuChoice == paper) lose();
