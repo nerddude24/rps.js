@@ -3,13 +3,13 @@ function getComputerChoice() {
 
   switch (choiceRng) {
     case 1:
-      return "Rock";
+      return "rock";
     case 2:
-      return "Paper";
+      return "paper";
     case 3:
-      return "Scissors";
+      return "scissors";
     default:
       console.warn("choiceRng is an unexpected value! returning 'Rock'");
-      return "Rock";
+      return "rock";
   }
 }
