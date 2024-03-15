@@ -22,12 +22,7 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-	let choice = prompt("Rock, Paper, or Scissors?").toLowerCase();
-
-	if (!(choice in [rock, paper, scissors])) {
-		alert("Incorrect choice!");
-		return null;
-	}
+	let choice = prompt("Rock, Paper, or Scissors?").toLowerCase().trim();
 
 	return choice;
 }
@@ -41,7 +36,6 @@ function win() {
 }
 
 userChoice = getUserChoice();
-if (userChoice === null) return;
 
 cpuChoice = getComputerChoice();
 
@@ -58,4 +52,6 @@ else if (userChoice == rock) {
 } else if (userChoice == scissors) {
 	if (cpuChoice == paper) win();
 	else if (cpuChoice == rock) lose();
+} else {
+	alert("Incorrect Input!");
 }
