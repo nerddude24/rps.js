@@ -35,23 +35,35 @@ function win() {
 	alert("You win! " + userChoice + " beats " + cpuChoice + "!");
 }
 
-userChoice = getUserChoice();
+function playRound() {
+	userChoice = getUserChoice();
 
-cpuChoice = getComputerChoice();
+	cpuChoice = getComputerChoice();
 
-console.log("CPU: " + cpuChoice);
-console.log("USER: " + userChoice);
+	console.log("CPU: " + cpuChoice);
+	console.log("USER: " + userChoice);
 
-if (userChoice == cpuChoice) alert("It's a tie!");
-else if (userChoice == rock) {
-	if (cpuChoice == scissors) win();
-	else if (cpuChoice == paper) lose();
-} else if (userChoice == paper) {
-	if (cpuChoice == rock) win();
-	else if (cpuChoice == scissors) lose();
-} else if (userChoice == scissors) {
-	if (cpuChoice == paper) win();
-	else if (cpuChoice == rock) lose();
-} else {
-	alert("Incorrect Input!");
+	if (userChoice == cpuChoice) alert("It's a tie!");
+	else if (userChoice == rock) {
+		if (cpuChoice == scissors) win();
+		else if (cpuChoice == paper) lose();
+	} else if (userChoice == paper) {
+		if (cpuChoice == rock) win();
+		else if (cpuChoice == scissors) lose();
+	} else if (userChoice == scissors) {
+		if (cpuChoice == paper) win();
+		else if (cpuChoice == rock) lose();
+	} else {
+		alert("Incorrect Input!");
+	}
 }
+
+function playGame(rounds) {
+	console.log("Starting Game");
+	for (let i = 1; i <= rounds; i++) {
+		console.log("Round " + i.toString());
+		playRound();
+	}
+}
+
+playGame(5);
