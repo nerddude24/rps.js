@@ -5,6 +5,9 @@ const scissors = "scissors";
 let cpuChoice = "";
 let userChoice = "";
 
+let cpuScore = 0;
+let userScore = 0;
+
 function getComputerChoice() {
 	let choiceRng = Math.floor(Math.random() * 3) + 1;
 
@@ -29,10 +32,12 @@ function getUserChoice() {
 
 function lose() {
 	alert("You lose! " + cpuChoice + " beats " + userChoice + "!");
+	cpuScore++;
 }
 
 function win() {
 	alert("You win! " + userChoice + " beats " + cpuChoice + "!");
+	userScore++;
 }
 
 function playRound() {
@@ -58,12 +63,21 @@ function playRound() {
 	}
 }
 
-function playGame(rounds) {
+function playGame(rounds = 3) {
 	console.log("Starting Game");
 	for (let i = 1; i <= rounds; i++) {
-		console.log("Round " + i.toString());
+		console.log("Round #" + i.toString());
 		playRound();
 	}
+
+	if (cpuScore > userScore) {
+		console.log("YOU LOSE.");
+	} else if (userScore > cpuScore) {
+		console.log("YOU WIN!");
+	} else if (userScore == cpuScore) {
+		console.log("YOU TIED.");
+	}
+	console.log(`YOUR SCORE: ${userScore} - CPU SCORE: ${cpuScore}`);
 }
 
-playGame(5);
+playGame(3);
