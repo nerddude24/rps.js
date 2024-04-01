@@ -1,6 +1,6 @@
-const rock = "rock";
-const paper = "paper";
-const scissors = "scissors";
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 
 let cpuChoice = "";
 let userChoice = "";
@@ -13,14 +13,14 @@ function getComputerChoice() {
 
 	switch (choiceRng) {
 		case 1:
-			return rock;
+			return ROCK;
 		case 2:
-			return paper;
+			return PAPER;
 		case 3:
-			return scissors;
+			return SCISSORS;
 		default:
 			console.warn("choiceRng is an unexpected value! returning 'Rock'");
-			return rock;
+			return ROCK;
 	}
 }
 
@@ -45,7 +45,8 @@ function tie() {
 }
 
 function playRound() {
-	userChoice = getUserChoice();
+	// * this is only for cli app, and is deprecated.
+	// userChoice = getUserChoice();
 
 	cpuChoice = getComputerChoice();
 
@@ -53,15 +54,15 @@ function playRound() {
 	console.log("USER: " + userChoice);
 
 	if (userChoice == cpuChoice) tie();
-	else if (userChoice == rock) {
-		if (cpuChoice == scissors) win();
-		else if (cpuChoice == paper) lose();
-	} else if (userChoice == paper) {
-		if (cpuChoice == rock) win();
-		else if (cpuChoice == scissors) lose();
-	} else if (userChoice == scissors) {
-		if (cpuChoice == paper) win();
-		else if (cpuChoice == rock) lose();
+	else if (userChoice == ROCK) {
+		if (cpuChoice == SCISSORS) win();
+		else if (cpuChoice == PAPER) lose();
+	} else if (userChoice == PAPER) {
+		if (cpuChoice == ROCK) win();
+		else if (cpuChoice == SCISSORS) lose();
+	} else if (userChoice == SCISSORS) {
+		if (cpuChoice == PAPER) win();
+		else if (cpuChoice == ROCK) lose();
 	} else {
 		alert("Incorrect Input!");
 	}
@@ -84,4 +85,21 @@ function playGame(rounds = 3) {
 	console.log(`YOUR SCORE: ${userScore} - CPU SCORE: ${cpuScore}`);
 }
 
-playGame(3);
+const rockBtn = document.querySelector("#rockbtn");
+const paperBtn = document.querySelector("#paperbtn");
+const scissorsBtn = document.querySelector("#scissorsbtn");
+
+rockBtn.addEventListener("click", (_) => {
+	userChoice = ROCK;
+	playRound();
+});
+
+paperBtn.addEventListener("click", (_) => {
+	userChoice = PAPER;
+	playRound();
+});
+
+scissorsBtn.addEventListener("click", (_) => {
+	userChoice = SCISSORS;
+	playRound();
+});
