@@ -9,6 +9,7 @@ let cpuScore = 0;
 let userScore = 0;
 
 const roundResultText = document.querySelector("#round-result");
+const roundChoicesText = document.querySelector("#round-choices");
 
 function getComputerChoice() {
 	let choiceRng = Math.floor(Math.random() * 3) + 1;
@@ -54,8 +55,12 @@ function playRound() {
 
 	cpuChoice = getComputerChoice();
 
-	console.log("CPU: " + cpuChoice);
-	console.log("USER: " + userChoice);
+	roundChoicesText.textContent =
+		"YOUR CHOICE: " +
+		choiceAsEmoji(userChoice) +
+		" | " +
+		"CPU: " +
+		choiceAsEmoji(cpuChoice);
 
 	if (userChoice == cpuChoice) tie();
 	else if (userChoice == ROCK) {
