@@ -10,6 +10,7 @@ let userScore = 0;
 
 const roundResultText = document.querySelector("#round-result");
 const roundChoicesText = document.querySelector("#round-choices");
+const roundScoreText = document.querySelector("#round-score");
 
 function getComputerChoice() {
 	let choiceRng = Math.floor(Math.random() * 3) + 1;
@@ -77,6 +78,9 @@ function playRound() {
 			"I have no idea what you did, but you managed to submit an incorrect choice, well done."
 		);
 	}
+
+	roundScoreText.textContent =
+		"YOUR SCORE: " + userScore + " vs " + "CPU SCORE: " + cpuScore;
 }
 
 // * Deprecated Code for testing cli
