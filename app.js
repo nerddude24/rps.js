@@ -1,12 +1,14 @@
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
+const MAX_SCORE = 5;
 
 let cpuChoice = "";
 let userChoice = "";
 
 let cpuScore = 0;
 let userScore = 0;
+let gameOver = false;
 
 const roundResultText = document.querySelector("#round-result");
 const roundChoicesText = document.querySelector("#round-choices");
@@ -51,6 +53,8 @@ function tie() {
 }
 
 function playRound() {
+	if (gameOver) return;
+
 	// * this is only for cli app, and is deprecated.
 	// userChoice = getUserChoice();
 
@@ -81,6 +85,14 @@ function playRound() {
 
 	roundScoreText.textContent =
 		"YOUR SCORE: " + userScore + " vs " + "CPU SCORE: " + cpuScore;
+
+	// * End the game if one of the scores reached the MAX_SCORE
+	if (Math.max(cpuScore, userScore) >= MAX_SCORE) {
+		gameOver = true;
+		roundScoreText.textContent += " GAME OVER! ";
+		if (cpuScore > userScore) roundScoreText.textContent += "You lose.";
+		else roundScoreText.textContent += "You win!";
+	}
 }
 
 // * Deprecated Code for testing cli
