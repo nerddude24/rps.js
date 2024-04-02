@@ -68,11 +68,14 @@ function playRound() {
 		if (cpuChoice == PAPER) win();
 		else if (cpuChoice == ROCK) lose();
 	} else {
-		alert("Incorrect Input!");
+		console.error(
+			"I have no idea what you did, but you managed to submit an incorrect choice, well done."
+		);
 	}
 }
 
-function playGame(rounds = 3) {
+// * Deprecated Code for testing cli
+/* function playGame(rounds = 3) {
 	console.log("Starting Game");
 	for (let i = 1; i <= rounds; i++) {
 		console.log("Round #" + i.toString());
@@ -80,15 +83,16 @@ function playGame(rounds = 3) {
 	}
 
 	if (cpuScore > userScore) {
-		roundResultText.textContent = "YOU LOSE.";
+		alert("YOU LOSE!");
 	} else if (userScore > cpuScore) {
-		roundResultText.textContent = "YOU WIN!";
+		alert("YOU WIN!");
 	} else if (userScore == cpuScore) {
-		roundResultText.textContent = "YOU TIED.";
+		alert( "YOU TIED.");
 	}
 	console.log(`YOUR SCORE: ${userScore} - CPU SCORE: ${cpuScore}`);
-}
+} */
 
+// * Converts one of the three choices to it's corresponding emoji.
 function choiceAsEmoji(str) {
 	switch (str) {
 		case ROCK:
