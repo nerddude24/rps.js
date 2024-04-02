@@ -8,7 +8,7 @@ let userChoice = "";
 let cpuScore = 0;
 let userScore = 0;
 
-const resultText = document.querySelector("#result-text");
+const roundResultText = document.querySelector("#round-result");
 
 function getComputerChoice() {
 	let choiceRng = Math.floor(Math.random() * 3) + 1;
@@ -33,19 +33,19 @@ function getUserChoice() {
 }
 
 function lose() {
-	resultText.textContent =
+	roundResultText.textContent =
 		"You lose! " + cpuChoice + " beats " + userChoice + "!";
 	cpuScore++;
 }
 
 function win() {
-	resultText.textContent =
+	roundResultText.textContent =
 		"You win! " + userChoice + " beats " + cpuChoice + "!";
 	userScore++;
 }
 
 function tie() {
-	resultText.textContent = "It's a tie!";
+	roundResultText.textContent = "It's a tie!";
 }
 
 function playRound() {
@@ -80,13 +80,29 @@ function playGame(rounds = 3) {
 	}
 
 	if (cpuScore > userScore) {
-		resultText.textContent = "YOU LOSE.";
+		roundResultText.textContent = "YOU LOSE.";
 	} else if (userScore > cpuScore) {
-		resultText.textContent = "YOU WIN!";
+		roundResultText.textContent = "YOU WIN!";
 	} else if (userScore == cpuScore) {
-		resultText.textContent = "YOU TIED.";
+		roundResultText.textContent = "YOU TIED.";
 	}
 	console.log(`YOUR SCORE: ${userScore} - CPU SCORE: ${cpuScore}`);
+}
+
+function choiceAsEmoji(str) {
+	switch (str) {
+		case ROCK:
+			return "🪨";
+		case PAPER:
+			return "📄";
+		case SCISSORS:
+			return "✂️";
+		default:
+			console.error(
+				"Unexpected input in choiceAsEmoji func, str = " + str
+			);
+			return "NULL";
+	}
 }
 
 const rockBtn = document.querySelector("#rock-btn");
