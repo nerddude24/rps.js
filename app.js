@@ -8,6 +8,8 @@ let userChoice = "";
 let cpuScore = 0;
 let userScore = 0;
 
+const resultText = document.querySelector("#result-text");
+
 function getComputerChoice() {
 	let choiceRng = Math.floor(Math.random() * 3) + 1;
 
@@ -31,17 +33,19 @@ function getUserChoice() {
 }
 
 function lose() {
-	alert("You lose! " + cpuChoice + " beats " + userChoice + "!");
+	resultText.textContent =
+		"You lose! " + cpuChoice + " beats " + userChoice + "!";
 	cpuScore++;
 }
 
 function win() {
-	alert("You win! " + userChoice + " beats " + cpuChoice + "!");
+	resultText.textContent =
+		"You win! " + userChoice + " beats " + cpuChoice + "!";
 	userScore++;
 }
 
 function tie() {
-	alert("It's a tie!");
+	resultText.textContent = "It's a tie!";
 }
 
 function playRound() {
@@ -76,18 +80,18 @@ function playGame(rounds = 3) {
 	}
 
 	if (cpuScore > userScore) {
-		console.log("YOU LOSE.");
+		resultText.textContent = "YOU LOSE.";
 	} else if (userScore > cpuScore) {
-		console.log("YOU WIN!");
+		resultText.textContent = "YOU WIN!";
 	} else if (userScore == cpuScore) {
-		console.log("YOU TIED.");
+		resultText.textContent = "YOU TIED.";
 	}
 	console.log(`YOUR SCORE: ${userScore} - CPU SCORE: ${cpuScore}`);
 }
 
-const rockBtn = document.querySelector("#rockbtn");
-const paperBtn = document.querySelector("#paperbtn");
-const scissorsBtn = document.querySelector("#scissorsbtn");
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
 
 rockBtn.addEventListener("click", (_) => {
 	userChoice = ROCK;
